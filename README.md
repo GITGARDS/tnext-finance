@@ -6,6 +6,10 @@ https://www.youtube.com/watch?v=N_uNKAus0II
 ---
 
 COMPONENTS
+https://ui.shadcn.com/
+npx shadcn@latest init
+
+
 
 ---
 
