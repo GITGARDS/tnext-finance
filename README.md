@@ -9,18 +9,17 @@ COMPONENTS
 https://ui.shadcn.com/
 npx shadcn@latest init
 
-
-
 ---
 
+authentication
+https://dashboard.clerk.com/apps/new
+yarn add @clerk/nextjs
 XXXXXXX
 
 ---
 
-XXXXXXX
+## https://logoipsum.com/
 
 ---
-
-XXXXXXX
-
+yarn add hono
 ---
