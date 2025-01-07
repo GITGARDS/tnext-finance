@@ -14,7 +14,9 @@ npx shadcn@latest init
 authentication
 https://dashboard.clerk.com/apps/new
 yarn add @clerk/nextjs
-XXXXXXX
+https://hono.dev/
+yarn add @hono/clerk-auth
+yarn add @clerk/backend
 
 ---
 
@@ -22,4 +24,5 @@ XXXXXXX
 
 ---
 yarn add hono
+yarn add @hono/zod-validator
 ---
