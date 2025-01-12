@@ -5,6 +5,7 @@ import "./globals.css";
 import QueryProviders from "@/providers/query-providers";
 import SheetProvider from "@/providers/sheet-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <QueryProviders>
             <SheetProvider />
             {children}
+            <Toaster richColors />
           </QueryProviders>
         </body>
       </html>
