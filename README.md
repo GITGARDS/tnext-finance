@@ -28,3 +28,29 @@ yarn add @hono/zod-validator
 ---
 yarn add react-use
 ---
+conect to database
+https://console.neon.tech/
+---
+ORM outra opcao ao prisma
+
+yarn add drizzle-orm @neondatabase/serverless
+yarn add -D drizzle-kit
+
+ "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate --dialect=postgresql --schema=db/schema.ts --out=./drizzle",
+    "db:migrate": "tsx ./scripts/migrate.ts",
+    "db:studio": "drizzle-kit studio"
+  },
+
+  yarn db:generate // quando muda alguma coisa nas tabelas
+----------------
+  yarn add @tanstack/react-query
+------------
+yarn add -D drizzle-zod
+-------------
+yarn add -D @paralleldrive/cuid2
+-------------
