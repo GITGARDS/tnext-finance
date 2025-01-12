@@ -54,3 +54,5 @@ yarn add -D drizzle-zod
 -------------
 yarn add -D @paralleldrive/cuid2
 -------------
+yarn add -D zustand
+-------------
