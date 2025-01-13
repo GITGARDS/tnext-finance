@@ -2,39 +2,37 @@
 import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete";
+import { useGetAccounts } from "@/features/accounts/api/use-get-accouts";
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
-import { Plus } from "lucide-react";
-import { columns, Payment } from "./columns";
-
-const data: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "2",
-    amount: 200,
-    status: "failed",
-    email: "email2@example.com",
-  },
-  {
-    id: "3",
-    amount: 300,
-    status: "processing",
-    email: "email3@example.com",
-  },
-  {
-    id: "4",
-    amount: 400,
-    status: "success",
-    email: "email4@example.com",
-  },
-];
+import { Loader2, Plus } from "lucide-react";
+import { columns } from "./columns";
 
 export default function AccountsPage() {
   const newAccount = useNewAccount();
+  const deleteAccounts = useBulkDeleteAccounts();
+  const accountsQuery = useGetAccounts();
+  const accounts = accountsQuery.data || [];
+
+  const isDisabled = accounts.isLoading || deleteAccounts.isPending;
+
+  if (accountsQuery.isLoading) {
+    return (
+      <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
+        <Card className="border-nome drop-shadow-sm">
+          <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
+            <Skeleton className="h-8 w-48" />
+          </CardHeader>
+          <CardContent>
+            <div className="h-[500px] w-full flex items-center justify-center">
+              <Loader2 className="size-6 text-slate-500 animate-spin" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
@@ -47,7 +45,18 @@ export default function AccountsPage() {
           </Button>
         </CardHeader>
         <CardContent>
-          <DataTable filterKey={"email"} columns={columns} data={data} />
+          <DataTable
+            filterKey={"name"}
+            columns={columns}
+            data={accounts}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onDelete={(row:any) => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const ids = row.map((r:any) => r.original.id);
+              deleteAccounts.mutate({ ids });
+            }}
+            disable={isDisabled}
+          />
         </CardContent>
       </Card>
     </div>

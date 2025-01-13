@@ -9,4 +9,6 @@ export const accounts = pgTable("accounts", {
 });
 
 export const selectAccountSchema = createSelectSchema(accounts);
+
 export const insertAccountSchema = createInsertSchema(accounts);
+
