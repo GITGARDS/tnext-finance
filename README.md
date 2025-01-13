@@ -56,3 +56,5 @@ yarn add -D @paralleldrive/cuid2
 -------------
 yarn add -D zustand
 -------------
+yarn add @tanstack/react-table
+-------------

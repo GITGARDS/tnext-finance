@@ -6,13 +6,7 @@ import accounts from "./accounts";
 
 const app = new Hono().basePath("/api");
 
-// app.onError((err, c) => {
-//   if (err instanceof HTTPException) {
-//     return err.getResponse();
-//   }
-//   return c.json({ error: "Internal server error" }, 500);
-// });
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const routes = app.route("/accounts", accounts);
 
 export const GET = handle(app);
