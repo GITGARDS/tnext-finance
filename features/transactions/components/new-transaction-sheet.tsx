@@ -5,23 +5,23 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { insertAccountSchema } from "@/db/schema";
+import { insertTransactionSchema } from "@/db/schema";
 import { useCallback } from "react";
 import { z } from "zod";
-import { useCreateAccounts } from "../api/use-create-accounts";
-import { useNewAccount } from "../hooks/use-new-account";
-import AccountForm from "./account-form";
+import { useCreateTransactions } from "../api/use-create-transactions";
+import { useNewTransaction } from "../hooks/use-new-transaction";
+import TransactionForm from "./transaction-form";
 
-const formSchema = insertAccountSchema.pick({
+const formSchema = insertTransactionSchema.pick({
   name: true,
 });
 
 type FormValues = z.input<typeof formSchema>;
 
-export default function NewAccountSheet() {
-  const { isOpen, onClose } = useNewAccount();
+export default function NewTransactionSheet() {
+  const { isOpen, onClose } = useNewTransaction();
 
-  const mutation = useCreateAccounts();
+  const mutation = useCreateTransactions();
 
   const onSubmit = useCallback(
     (values: FormValues) => {
@@ -38,12 +38,12 @@ export default function NewAccountSheet() {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="space-y-0">
         <SheetHeader>
-          <SheetTitle>New Account</SheetTitle>
+          <SheetTitle>New Transaction</SheetTitle>
           <SheetDescription>
-            Create a new account to track your transactions.
+            Create a new transaction to track your transactions.
           </SheetDescription>
         </SheetHeader>
-        <AccountForm
+        <TransactionForm
           onSubmit={onSubmit}
           disabled={mutation.isPending}
           defaultValues={{ name: "" }}

@@ -8,14 +8,14 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { insertAccountSchema } from "@/db/schema";
+import { insertTransactionSchema } from "@/db/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash } from "lucide-react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const formSchema = insertAccountSchema.pick({
+const formSchema = insertTransactionSchema.pick({
   name: true,
 });
 
@@ -29,7 +29,7 @@ type Props = {
   disabled?: boolean;
 };
 
-export default function AccountForm({
+export default function TransactionForm({
   id,
   defaultValues,
   onSubmit,
@@ -73,7 +73,7 @@ export default function AccountForm({
             )}
           />
           <Button className="w-full" disabled={disabled}>
-            {id ? "Save changes" : "Create account"}
+            {id ? "Save changes" : "Create transaction"}
           </Button>
           {!!id && (
             <Button
@@ -84,7 +84,7 @@ export default function AccountForm({
               variant={"outline"}
             >
               <Trash className="size-4 mr-2" />
-              Delete account
+              Delete transaction
             </Button>
           )}
         </form>
