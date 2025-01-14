@@ -58,3 +58,5 @@ yarn add -D zustand
 -------------
 yarn add @tanstack/react-table
 -------------
+yarn add date-fns
+-------------

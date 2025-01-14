@@ -27,7 +27,7 @@ export default function EditAccountSheet() {
 
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
-    "You are about to delete this transaction"
+    "You are about to delete this account"
   );
 
   const accountQuery = useGetAccount(id);
