@@ -8,7 +8,7 @@ import {
 import { insertAccountSchema } from "@/db/schema";
 import { useCallback } from "react";
 import { z } from "zod";
-import { useCreateAccounts } from "../api/use-create-accounts";
+import { useCreateAccount } from "../api/use-create-account";
 import { useNewAccount } from "../hooks/use-new-account";
 import AccountForm from "./account-form";
 
@@ -21,7 +21,7 @@ type FormValues = z.input<typeof formSchema>;
 export default function NewAccountSheet() {
   const { isOpen, onClose } = useNewAccount();
 
-  const mutation = useCreateAccounts();
+  const mutation = useCreateAccount();
 
   const onSubmit = useCallback(
     (values: FormValues) => {

@@ -38,7 +38,7 @@ export default function TransactionsPage() {
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
       <Card className="border-nome drop-shadow-sm">
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-          <CardTitle className="text-xl line-clamp-1">Transactions Page</CardTitle>
+          <CardTitle className="text-xl line-clamp-1">Transactions History</CardTitle>
           <Button onClick={newTransaction.onOpen} size={"sm"}>
             <Plus className="size-4 mr-2" />
             Add new

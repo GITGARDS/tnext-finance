@@ -8,7 +8,7 @@ import {
 import { insertCategorySchema } from "@/db/schema";
 import { useCallback } from "react";
 import { z } from "zod";
-import { useCreateCategories } from "../api/use-create-categories";
+import { useCreateCategory } from "../api/use-create-category";
 import { useNewCategory } from "../hooks/use-new-category";
 import CategoryForm from "./category-form";
 
@@ -21,7 +21,7 @@ type FormValues = z.input<typeof formSchema>;
 export default function NewCategorySheet() {
   const { isOpen, onClose } = useNewCategory();
 
-  const mutation = useCreateCategories();
+  const mutation = useCreateCategory();
 
   const onSubmit = useCallback(
     (values: FormValues) => {

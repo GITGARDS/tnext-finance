@@ -60,3 +60,5 @@ yarn add @tanstack/react-table
 -------------
 yarn add date-fns
 -------------
+yarn add react-select
+-------------
