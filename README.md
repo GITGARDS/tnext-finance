@@ -62,3 +62,5 @@ yarn add date-fns
 -------------
 yarn add react-select
 -------------
+yarn add react-currency-input-field
+-------------

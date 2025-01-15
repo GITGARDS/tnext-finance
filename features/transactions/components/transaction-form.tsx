@@ -1,4 +1,7 @@
 "use client";
+import { AmountInput } from "@/components/amount-input";
+import { DatePicker } from "@/components/date-picker";
+import Select from "@/components/select";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -8,6 +11,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { insertTransactionSchema } from "@/db/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash } from "lucide-react";
@@ -59,12 +63,10 @@ export default function TransactionForm({
     defaultValues: defaultValues,
   });
 
-  const handleSubmit = useCallback(
-    (values: FormValues) => {
-      onSubmit(values);
-    },
-    [onSubmit]
-  );
+  const handleSubmit = useCallback((values: FormValues) => {
+    console.log({ values });
+    // onSubmit(values);
+  }, []);
 
   const handleDelete = useCallback(() => {
     onDelete?.();
@@ -78,21 +80,112 @@ export default function TransactionForm({
           className="space-y-4 pt-4"
         >
           <FormField
-            name="name"
+            name="date"
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <DatePicker
+                    value={field.value}
+                    onChange={field.onChange}
+                    disabled={disabled}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            name="accountId"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Account</FormLabel>
+                <FormControl>
+                  <Select
+                    placeholder="Select an account"
+                    options={accountOptions}
+                    onCreate={onCreateAccount}
+                    value={field.value}
+                    onChange={field.onChange}
+                    disabled={disabled}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="categoryId"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Category</FormLabel>
+                <FormControl>
+                  <Select
+                    placeholder="Select an category"
+                    options={categoryOptions}
+                    onCreate={onCreateCategory}
+                    value={field.value}
+                    onChange={field.onChange}
+                    disabled={disabled}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            name="payee"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Payee</FormLabel>
                 <FormControl>
                   <Input
                     disabled={disabled}
-                    placeholder="e.g Cash, Bank, Credit Card"
+                    placeholder="Add a payee"
                     {...field}
                   />
                 </FormControl>
               </FormItem>
             )}
           />
+
+          <FormField
+            name="amount"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Amount</FormLabel>
+                <FormControl>
+                  <AmountInput
+                    {...field}
+                    disabled={disabled}
+                    placeholder="0.00"
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            name="notes"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Notes</FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    value={field.value ?? ""}
+                    disabled={disabled}
+                    placeholder="Optional notes"
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
           <Button className="w-full" disabled={disabled}>
             {id ? "Save changes" : "Create transaction"}
           </Button>
