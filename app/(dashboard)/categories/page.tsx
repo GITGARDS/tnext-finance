@@ -15,7 +15,7 @@ export default function CategoriesPage() {
   const categoriesQuery = useGetCategories();
   const categories = categoriesQuery.data || [];
 
-  const isDisabled = categories.isLoading || deleteCategories.isPending;
+  const isDisabled = categoriesQuery.isLoading || deleteCategories.isPending;
 
   if (categoriesQuery.isLoading) {
     return (

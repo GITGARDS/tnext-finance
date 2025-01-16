@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { insertTransactionSchema } from "@/db/schema";
+import { convertAmountToMiliunits } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash } from "lucide-react";
 import { useCallback } from "react";
@@ -63,10 +64,17 @@ export default function TransactionForm({
     defaultValues: defaultValues,
   });
 
-  const handleSubmit = useCallback((values: FormValues) => {
-    console.log({ values });
-    // onSubmit(values);
-  }, []);
+  const handleSubmit = useCallback(
+    (values: FormValues) => {
+      const amount = parseFloat(values.amount);
+      const amountInMiliunits = convertAmountToMiliunits(amount);
+      onSubmit({
+        ...values,
+        amount: amountInMiliunits,
+      });
+    },
+    [onSubmit]
+  );
 
   const handleDelete = useCallback(() => {
     onDelete?.();

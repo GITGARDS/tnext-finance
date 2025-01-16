@@ -48,9 +48,9 @@ const app = new Hono()
           category: categories.name,
           categoryId: transactions.categoryId,
           payee: transactions.payee,
-          ammout: transactions.amount,
+          amount: transactions.amount,
           notes: transactions.notes,
-          accounts: accounts.name,
+          account: accounts.name,
           accountId: transactions.accountId,
         })
         .from(transactions)
@@ -97,13 +97,13 @@ const app = new Hono()
           date: transactions.date,
           categoryId: transactions.categoryId,
           payee: transactions.payee,
-          ammout: transactions.amount,
+          amount: transactions.amount,
           notes: transactions.notes,
           accountId: transactions.accountId,
         })
         .from(transactions)
         .innerJoin(accounts, eq(transactions.accountId, accounts.id))
-        .where(and(eq(transactions.id, id), eq(accounts.id, auth.userId)));
+        .where(and(eq(transactions.id, id), eq(accounts.userId, auth.userId)));
 
       if (!data) {
         return c.json({ error: "Not found id" }, 400);

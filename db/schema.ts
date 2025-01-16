@@ -42,11 +42,9 @@ export const transactions = pgTable("transactions", {
     })
     .notNull(),
 
-  categoryId: text("category_id")
-    .references(() => categories.id, {
-      onDelete: "set null",
-    })
-    .notNull(),
+  categoryId: text("category_id").references(() => categories.id, {
+    onDelete: "set null",
+  }),
 });
 
 export const transactionsRelations = relations(transactions, ({ one }) => ({

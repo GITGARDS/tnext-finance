@@ -15,7 +15,7 @@ export default function AccountsPage() {
   const accountsQuery = useGetAccounts();
   const accounts = accountsQuery.data || [];
 
-  const isDisabled = accounts.isLoading || deleteAccounts.isPending;
+  const isDisabled = accountsQuery.isLoading || deleteAccounts.isPending;
 
   if (accountsQuery.isLoading) {
     return (

@@ -64,3 +64,5 @@ yarn add react-select
 -------------
 yarn add react-currency-input-field
 -------------
+yarn add react-papaparse
+---------------
