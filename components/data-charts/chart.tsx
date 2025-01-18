@@ -2,12 +2,12 @@
 import { SelectTrigger } from "@radix-ui/react-select";
 import { AreaChart, BarChart3, FileSearch, LineChart, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Select, SelectContent, SelectItem, SelectValue } from "../ui/select";
+import { Skeleton } from "../ui/skeleton";
 import { AreaVariant } from "./area-variant";
 import { BarVariant } from "./bar-variant";
 import { LineVariant } from "./line-variant";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Select, SelectContent, SelectItem, SelectValue } from "./ui/select";
-import { Skeleton } from "./ui/skeleton";
 
 type Props = {
   data?: {

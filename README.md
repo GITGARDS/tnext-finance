@@ -72,3 +72,5 @@ yarn add react-countup
 ---------------
 yarn add recharts
 ---------------
+yarn add query-string
+---------------

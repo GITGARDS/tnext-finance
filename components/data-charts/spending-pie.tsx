@@ -2,12 +2,12 @@
 import { SelectTrigger } from "@radix-ui/react-select";
 import { FileSearch, Loader2, PieChart, Radar, Target } from "lucide-react";
 import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Select, SelectContent, SelectItem, SelectValue } from "../ui/select";
+import { Skeleton } from "../ui/skeleton";
 import { PieVariant } from "./pie-variant";
 import { RadarVariant } from "./radar-variant";
 import { RadialVariant } from "./radial-variant";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Select, SelectContent, SelectItem, SelectValue } from "./ui/select";
-import { Skeleton } from "./ui/skeleton";
 
 type Props = {
   data?: {
