@@ -6,11 +6,7 @@ import { useState } from "react";
 import { useMedia } from "react-use";
 import NavButton from "./nav-button";
 import { Button } from "./ui/button";
-import {
-    Sheet,
-    SheetContent,
-    SheetTrigger
-} from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const routes = [
   {
@@ -49,12 +45,13 @@ export default function Navigation() {
 
   if (isMobile) {
     return (
-      <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger>
-          <Button
-            variant={"outline"}
-            size={"sm"}
-            className="font-normal bg-white/10 hover:bg-white/20 
+      <>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger>
+            <Button
+              variant={"outline"}
+              size={"sm"}
+              className="font-normal bg-white/10 hover:bg-white/20 
             hover:text-white
                 focus-visible:ring-offset-0 
                 focus-visible:ring-transparent
@@ -62,43 +59,44 @@ export default function Navigation() {
                 text-white
                 focus:bg-white/30
                 transition
-            "
-          >
-            <Menu className="size-4" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side={"left"} className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6">
-            {routes.map((route) => {
-              return (
-                <Button
-                  key={route.href}
-                  variant={route.href === pathName ? "secondary" : "ghost"}
-                  onClick={() => onClick(route.href)}
-                  className="w-full justify-start"
-                >
-                  {route.label}
-                </Button>
-              );
-            })}
-          </nav>
-        </SheetContent>
-      </Sheet>
+                "
+            >
+              <Menu className="size-4" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side={"left"} className="px-2">
+            <nav className="flex flex-col gap-y-2 pt-6">
+                {routes.map((route) => {
+                  return (
+                    <Button
+                      key={route.href}
+                      variant={route.href === pathName ? "secondary" : "ghost"}
+                      onClick={() => onClick(route.href)}
+                      className="w-full justify-start"
+                    >
+                      {route.label}
+                    </Button>
+                  );
+                })}
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </>
     );
   }
 
   return (
     <nav className="hidden sm:flex items-center gap-x-2 overflow-x-auto">
-      {routes.map((route) => {
-        return (
-          <NavButton
-            key={route.href}
-            href={route.href}
-            label={route.label}
-            isActive={pathName === route.href}
-          />
-        );
-      })}
+        {routes.map((route) => {
+          return (
+            <NavButton
+              key={route.href}
+              href={route.href}
+              label={route.label}
+              isActive={pathName === route.href}
+            />
+          );
+        })}
     </nav>
   );
 }

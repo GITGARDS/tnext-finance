@@ -5,6 +5,7 @@ import "./globals.css";
 import QueryProviders from "@/providers/query-providers";
 import SheetProvider from "@/providers/sheet-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Suspense } from "react";
 import { Toaster } from "sonner";
 
 const geistSans = Geist({
@@ -35,7 +36,7 @@ export default function RootLayout({
         >
           <QueryProviders>
             <SheetProvider />
-            {children}
+            <Suspense>{children}</Suspense>
             <Toaster />
           </QueryProviders>
         </body>

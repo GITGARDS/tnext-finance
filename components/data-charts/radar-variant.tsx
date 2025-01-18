@@ -7,8 +7,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const COLORS = ["#0062ff", "#12C6FF", "#FF647F", "#FF9654"];
-
 type Props = {
   data?: {
     value: number;
