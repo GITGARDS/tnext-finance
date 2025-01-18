@@ -41,7 +41,7 @@ export const useGetSummary = () => {
           value: convertAmountFromMiliunits(category.value),
         })),
         days: data.days.map((day) => ({
-          ...data,
+          ...day,
           income: convertAmountFromMiliunits(day.income),
           expenses: convertAmountFromMiliunits(day.expenses),
         })),

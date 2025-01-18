@@ -70,3 +70,5 @@ yarn add react-icons
 ---------------
 yarn add react-countup
 ---------------
+yarn add recharts
+---------------

@@ -136,7 +136,7 @@ const app = new Hono().get(
             Number
           ),
         expenses:
-          sql`SUM(CASE WHEN ${transactions.amount} < 0 THEN ${transactions.amount} ELSE 0 END)`.mapWith(
+          sql`SUM(CASE WHEN ${transactions.amount} < 0 THEN ABS(${transactions.amount}) ELSE 0 END)`.mapWith(
             Number
           ),
       })
@@ -156,9 +156,6 @@ const app = new Hono().get(
     const days = fillMissingDays(activeDays, startDate, endDate);
 
     return c.json({
-      // currentPeriod,
-      // lastPeriod,
-
       data: {
         remainingAmount: currentPeriod.remaining,
         remainingChange,
