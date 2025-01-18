@@ -66,3 +66,7 @@ yarn add react-currency-input-field
 -------------
 yarn add react-papaparse
 ---------------
+yarn add react-icons
+---------------
+yarn add react-countup
+---------------
